@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Apple, FileText, Eye, HelpCircle } from 'lucide-react'
+import { Apple, FileText, Eye } from 'lucide-react'
 
 interface MenuBarProps {
   onAbout: () => void
@@ -211,7 +211,7 @@ export default function MenuBar({ onAbout, onShortcuts }: MenuBarProps) {
             onClick={() => handleMenuClick('help')}
             onBlur={handleMenuBlur}
           >
-            <HelpCircle size={12} />
+            <span>?</span>
             <span className="text-xs font-bold">Help</span>
           </button>
           {activeMenu === 'help' && (
