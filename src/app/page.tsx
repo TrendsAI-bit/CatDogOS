@@ -42,7 +42,7 @@ export default function Home() {
 
       {/* Main Chat Window */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <ChatWindow key="main-chat-window" />
+        <ChatWindow />
       </div>
 
       {/* About Window */}

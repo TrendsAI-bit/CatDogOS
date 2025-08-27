@@ -1,7 +1,5 @@
 'use client'
 
-
-
 interface ShortcutsWindowProps {
   onClose: () => void
 }
