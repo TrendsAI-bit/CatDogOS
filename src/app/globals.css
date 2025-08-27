@@ -1,26 +1,299 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Classic Macintosh System 7/OS 9 Styles */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --mac-gray-1: #E5E5E5;
+  --mac-gray-2: #C6C6C6;
+  --mac-gray-3: #8C8C8C;
+  --mac-gray-4: #666666;
+  --mac-black: #000000;
+  --mac-white: #FFFFFF;
+  --mac-blue: #0000FF;
+  --mac-red: #FF0000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  image-rendering: pixelated;
+  font-family: 'Chicago', 'VT323', 'ui-monospace', monospace;
+  background: var(--mac-gray-1);
+  color: var(--mac-black);
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Chicago', 'VT323', 'ui-monospace', monospace;
+  background: var(--mac-gray-1);
+  color: var(--mac-black);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Classic Macintosh Window Styles */
+.mac-window {
+  background: var(--mac-white);
+  border: 2px solid var(--mac-black);
+  border-radius: 0;
+  box-shadow: 
+    2px 2px 0 var(--mac-gray-3),
+    4px 4px 0 var(--mac-gray-4);
+  image-rendering: pixelated;
+}
+
+.mac-window-titlebar {
+  background: linear-gradient(to bottom, var(--mac-gray-1) 0%, var(--mac-gray-2) 100%);
+  border-bottom: 2px solid var(--mac-black);
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 12px;
+  image-rendering: pixelated;
+}
+
+.mac-window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.mac-window-control {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--mac-black);
+  border-radius: 0;
+  background: var(--mac-gray-1);
+  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.mac-window-control.close {
+  background: var(--mac-red);
+}
+
+.mac-window-control.minimize {
+  background: var(--mac-blue);
+}
+
+.mac-window-control.maximize {
+  background: var(--mac-gray-2);
+}
+
+/* Classic Macintosh Button Styles */
+.mac-button {
+  background: var(--mac-gray-1);
+  border: 2px outset var(--mac-gray-2);
+  border-radius: 0;
+  padding: 4px 12px;
+  font-family: 'Chicago', 'VT323', 'ui-monospace', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.mac-button:active {
+  border-style: inset;
+  background: var(--mac-gray-2);
+}
+
+.mac-button:focus {
+  outline: 2px solid var(--mac-black);
+}
+
+/* Classic Macintosh Input Styles */
+.mac-input {
+  background: var(--mac-white);
+  border: 2px inset var(--mac-gray-2);
+  border-radius: 0;
+  padding: 4px 8px;
+  font-family: 'Chicago', 'VT323', 'ui-monospace', monospace;
+  font-size: 12px;
+  image-rendering: pixelated;
+}
+
+.mac-input:focus {
+  outline: 2px solid var(--mac-black);
+}
+
+/* Classic Macintosh Menu Styles */
+.mac-menu {
+  background: var(--mac-white);
+  border: 2px solid var(--mac-black);
+  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--mac-gray-3);
+  image-rendering: pixelated;
+}
+
+.mac-menu-item {
+  padding: 4px 12px;
+  font-family: 'Chicago', 'VT323', 'ui-monospace', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.mac-menu-item:hover {
+  background: var(--mac-blue);
+  color: var(--mac-white);
+}
+
+/* Classic Macintosh Desktop Icons */
+.mac-desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  image-rendering: pixelated;
+  text-align: center;
+  font-family: 'Chicago', 'VT323', 'ui-monospace', monospace;
+  font-size: 10px;
+  font-weight: bold;
+  max-width: 80px;
+}
+
+.mac-desktop-icon:hover {
+  background: var(--mac-blue);
+  color: var(--mac-white);
+}
+
+.mac-desktop-icon.selected {
+  background: var(--mac-blue);
+  color: var(--mac-white);
+}
+
+/* Dithering Patterns */
+.dither-pattern {
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--mac-gray-2) 1px, transparent 0);
+  background-size: 4px 4px;
+  image-rendering: pixelated;
+}
+
+.dither-pattern-2 {
+  background-image: 
+    linear-gradient(45deg, var(--mac-gray-2) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--mac-gray-2) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--mac-gray-2) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--mac-gray-2) 75%);
+  background-size: 4px 4px;
+  background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+  image-rendering: pixelated;
+}
+
+/* Chat Message Styles */
+.chat-message {
+  margin-bottom: 16px;
+  image-rendering: pixelated;
+}
+
+.chat-message-cat {
+  background: var(--mac-gray-1);
+  border: 2px solid var(--mac-black);
+  border-radius: 0;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  image-rendering: pixelated;
+}
+
+.chat-message-dog {
+  background: var(--mac-white);
+  border: 2px solid var(--mac-black);
+  border-radius: 0;
+  padding: 8px 12px;
+  image-rendering: pixelated;
+}
+
+.chat-message-title {
+  font-weight: bold;
+  font-size: 10px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  image-rendering: pixelated;
+}
+
+.chat-message-content {
+  font-size: 12px;
+  line-height: 1.4;
+  image-rendering: pixelated;
+}
+
+/* Toggle Switch Styles */
+.mac-toggle {
+  position: relative;
+  width: 32px;
+  height: 16px;
+  background: var(--mac-gray-2);
+  border: 2px solid var(--mac-black);
+  border-radius: 0;
+  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.mac-toggle.active {
+  background: var(--mac-blue);
+}
+
+.mac-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  background: var(--mac-white);
+  border: 1px solid var(--mac-black);
+  image-rendering: pixelated;
+}
+
+.mac-toggle.active::after {
+  left: 18px;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 16px;
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mac-gray-1);
+  border: 1px solid var(--mac-black);
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mac-gray-3);
+  border: 1px solid var(--mac-black);
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mac-gray-4);
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--mac-black);
+  outline-offset: 1px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,27 +1,43 @@
 {
   "name": "catdogos",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A nostalgic two-voice assistant with classic Macintosh System 7/OS 9 aesthetic",
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "deploy": "vercel --prod"
   },
+  "keywords": [
+    "catdogos",
+    "macintosh",
+    "system7",
+    "os9",
+    "chat",
+    "ai",
+    "assistant"
+  ],
+  "author": "TrendsAI-bit",
+  "license": "MIT",
   "dependencies": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.5.2"
+    "framer-motion": "^10.16.4",
+    "lucide-react": "^0.292.0",
+    "next": "14.0.4",
+    "openai": "^5.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.2",
-    "@eslint/eslintrc": "^3"
+    "@eslint/eslintrc": "^3.0.0",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
   }
 }
