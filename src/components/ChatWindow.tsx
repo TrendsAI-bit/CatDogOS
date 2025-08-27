@@ -12,7 +12,7 @@ export default function ChatWindow() {
   const [jesterMode, setJesterMode] = useState(false)
   const [safeBeep, setSafeBeep] = useState(true)
   const [isMuted, setIsMuted] = useState(false)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [position, setPosition] = useState({ x: 100, y: 100 })
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
 
@@ -78,8 +78,9 @@ export default function ChatWindow() {
         width: isMaximized ? '90vw' : '800px',
         height: isMaximized ? '80vh' : '600px',
         position: isMaximized ? 'fixed' : 'absolute',
-        top: isMaximized ? '10vh' : `${position.y}px`,
-        left: isMaximized ? '5vw' : `${position.x}px`,
+        top: isMaximized ? '10vh' : position.y === 100 ? '50%' : `${position.y}px`,
+        left: isMaximized ? '5vw' : position.x === 100 ? '50%' : `${position.x}px`,
+        transform: isMaximized ? 'none' : position.y === 100 ? 'translate(-50%, -50%)' : 'none',
         zIndex: 10
       }}
       onMouseDown={handleMouseDown}
