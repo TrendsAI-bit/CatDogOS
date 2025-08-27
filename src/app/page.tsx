@@ -6,15 +6,18 @@ import DesktopIcon from '@/components/DesktopIcon'
 import ChatWindow from '@/components/ChatWindow'
 import AboutWindow from '@/components/AboutWindow'
 import ShortcutsWindow from '@/components/ShortcutsWindow'
+import ImageGenerator from '@/components/ImageGenerator'
 
 export default function Home() {
   const [showAbout, setShowAbout] = useState(false)
   const [showShortcuts, setShowShortcuts] = useState(false)
+  const [showImageGenerator, setShowImageGenerator] = useState(false)
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null)
 
   const desktopIcons = [
     { id: 'finder', name: 'Finder', icon: '📁' },
     { id: 'readme', name: 'ReadMe', icon: '📄' },
+    { id: 'imagegen', name: 'ImageGen', icon: '🎨' },
     { id: 'trash', name: 'Trash', icon: '🗑️' },
   ]
 
@@ -24,6 +27,7 @@ export default function Home() {
       <MenuBar 
         onAbout={() => setShowAbout(true)}
         onShortcuts={() => setShowShortcuts(true)}
+        onImageGenerator={() => setShowImageGenerator(true)}
       />
 
       {/* Desktop Icons */}
@@ -35,7 +39,12 @@ export default function Home() {
             name={icon.name}
             icon={icon.icon}
             isSelected={selectedIcon === icon.id}
-            onSelect={() => setSelectedIcon(icon.id)}
+            onSelect={() => {
+              setSelectedIcon(icon.id)
+              if (icon.id === 'imagegen') {
+                setShowImageGenerator(true)
+              }
+            }}
           />
         ))}
       </div>
@@ -53,6 +62,11 @@ export default function Home() {
       {/* Shortcuts Window */}
       {showShortcuts && (
         <ShortcutsWindow onClose={() => setShowShortcuts(false)} />
+      )}
+
+      {/* Image Generator Window */}
+      {showImageGenerator && (
+        <ImageGenerator onClose={() => setShowImageGenerator(false)} />
       )}
 
       {/* Footer */}

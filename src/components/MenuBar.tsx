@@ -6,9 +6,10 @@ import { Apple, FileText, Eye } from 'lucide-react'
 interface MenuBarProps {
   onAbout: () => void
   onShortcuts: () => void
+  onImageGenerator: () => void
 }
 
-export default function MenuBar({ onAbout, onShortcuts }: MenuBarProps) {
+export default function MenuBar({ onAbout, onShortcuts, onImageGenerator }: MenuBarProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
 
   const handleMenuClick = (menuName: string) => {
@@ -122,6 +123,9 @@ export default function MenuBar({ onAbout, onShortcuts }: MenuBarProps) {
               <div className="border-t border-black"></div>
               <div className="mac-menu-item">
                 Export Transcript...
+              </div>
+              <div className="mac-menu-item" onClick={onImageGenerator}>
+                Generate Image...
               </div>
               <div className="border-t border-black"></div>
               <div className="mac-menu-item">
